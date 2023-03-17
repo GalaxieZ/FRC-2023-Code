@@ -62,6 +62,7 @@ public static final class DriveConstants {
         public static final int TOP_NODE_BOX = 0; //change to the encoder position on the elevator 0-1
         public static final int BOTTOM_NODE_BOX = 0; //change to the encoder postion 0-1
         public static final int GROUNDPICKUP = 0; //theoretically this should be 0
+        public static final int LOWEr_BOX_NODE = 0; ///
     }
 
     public static class ArmConstants {
