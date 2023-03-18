@@ -22,7 +22,7 @@ public class AutoBalanceCommand extends CommandBase {
         this.driveSubsystem = driveSubsystem;
         this.navx = navx;
         addRequirements(driveSubsystem);
-    }
+    }   
 
     @Override
     public void execute() {
