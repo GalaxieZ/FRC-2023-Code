@@ -71,7 +71,7 @@ public class RobotContainer {
   public static final XboxController m_driverController2 = new XboxController(1);
 
   private final ElevatorSubsystem m_elevator = new ElevatorSubsystem();
-
+  private Claw m_claw = new Claw();
 
   
 
@@ -186,8 +186,12 @@ public class RobotContainer {
     new JoystickButton(m_driverController, Button.kRightBumper.value)
   .onTrue(new SwitchDriveMode(m_drivetrain));
 
-  // new JoystickButton(m_driverController2, Button.kRightBumper.value)
-  // .onTrue(new ExtendSolenoidCommand(m_claw));
+  //Activates Claw
+  new JoystickButton(m_driverController2, Button.kRightBumper.value)
+  .onTrue(new ExtendSolenoidCommand(m_claw));
+
+  new JoystickButton(m_driverController2, Button.kLeftBumper.value)
+  .onTrue(new RetractSolenoidCommand(m_claw));
   
 
   
