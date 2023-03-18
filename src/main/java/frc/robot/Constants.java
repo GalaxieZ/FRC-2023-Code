@@ -33,8 +33,8 @@ public static final class DriveConstants {
         public static final double kDeadband = 0.05;
 
          // Speed constants
-         public static final double kDriveSpeed = .95;
-         public static final double kTurnSpeed = .95;
+         public static final double kDriveSpeed = .8;
+         public static final double kTurnSpeed = .8;
 
          public static final double cDriveSpeed = .8;
          public static final double cTurnSpeed = .8;
@@ -67,6 +67,8 @@ public static final class DriveConstants {
     public static class ArmConstants {
         public static final int dLeftArmMotor = 7; //chane these 
         public static final int dRightArmMotor = 8; //change these 
+    
+    
 
     }
 

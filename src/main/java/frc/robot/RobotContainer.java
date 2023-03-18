@@ -23,12 +23,15 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
+import frc.robot.commands.ArmManualControlCommand;
 import frc.robot.commands.AutoBalanceCommand;
-import frc.robot.commands.ElevatorCommand;
+import frc.robot.commands.MoveArm;
 import frc.robot.commands.MoveElevatorCommand;
 import frc.robot.commands.MoveElevatorToPositionCommand;
+import frc.robot.commands.POVArmCommand;
 import frc.robot.commands.MoveElevatorCommand;
 import frc.robot.commands.SwitchDriveMode;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
@@ -65,6 +68,9 @@ public class RobotContainer {
 
   private final ElevatorSubsystem m_elevator = new ElevatorSubsystem();
 
+  private final ArmSubsystem m_arm =  new ArmSubsystem();
+
+ 
 
   
 
@@ -80,9 +86,17 @@ public class RobotContainer {
 
     // Configure the button bindings
     SlewRateLimiter filter = new SlewRateLimiter(2.6, 0, 0);
+
+   // ArmManualControlCommand armManualControlCommand = new ArmManualControlCommand(m_driverController, m_arm);
+    
+   /* m_arm.setDefaultCommand(new RunCommand(() -> m_arm.stop(), m_arm));
+    configureButtonBindings(); */
+
     m_elevator.setDefaultCommand(new RunCommand(() -> m_elevator.stop(), m_elevator));
     configureButtonBindings();
      
+    //armManualControlCommand.schedule();
+    
     if (m_driverController.getLeftBumper()) {
       //SLEWRATELIMITERTOGGLED
       m_drivetrain.setDefaultCommand(new RunCommand(() ->
@@ -103,6 +117,9 @@ public class RobotContainer {
 
     chooser.addOption("curvy path", loadPathplannerTrajectoryToRamseteCommand(
         "pathplanner/generatedJSON/curvy.wpilib.json",
+        true));
+        chooser.addOption("Jerk Path", loadPathplannerTrajectoryToRamseteCommand(
+        "pathplanner/generatedJSON/JerkPath.wpilib.json",
         true));
     chooser.addOption("FowardOnly", loadPathplannerTrajectoryToRamseteCommand(
           "pathplanner/generatedJSON/FowardOnly.wpilib.json",
@@ -179,13 +196,20 @@ public class RobotContainer {
     new JoystickButton(m_driverController, Button.kRightBumper.value)
   .onTrue(new SwitchDriveMode(m_drivetrain));
 
+  // manual control for arm
+ /*  new POVButton(m_driverController, 0)
+  .whileTrue(new armManualControlCommand(m_arm, () -> 1.0));
+
+  new POVButton(m_driverController, 180)
+  .whileTrue(new MoveArm(m_arm, () -> -1.0)); */
+
   
 //This is for manual control. Also for finding encoder positions
-  new POVButton(m_driverController, 0)
+ /*   new POVButton(m_driverController, 0)
   .whileTrue(new MoveElevatorCommand(m_elevator, () -> 1.0));
 
   new POVButton(m_driverController, 180)
-  .whileTrue(new MoveElevatorCommand(m_elevator, () -> -1.0));
+  .whileTrue(new MoveElevatorCommand(m_elevator, () -> -1.0)); */
 
 
   // Need To update positions in MoveELevator

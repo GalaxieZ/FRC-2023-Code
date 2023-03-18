@@ -309,7 +309,10 @@ public void tankDriveVoltsV2(double leftVolts, double rightVolts) {
       SmartDashboard.putNumber("RIGHT encoder value meters", getRightEncoderPosition());
       SmartDashboard.putNumber("Gyro heading", getHeading());
       SmartDashboard.putString("OdometryPoseMeters", m_odometry.getPoseMeters().toString());
-}
+      SmartDashboard.putNumber("Motor Temperature", m_leftMaster.getTemperature());
+     SmartDashboard.putNumber("Motor Temperature", m_rightMaster.getTemperature());
+  }
+ 
 
   public void resetEncoders() {
   }
