@@ -29,6 +29,12 @@ import frc.robot.commands.MoveElevatorCommand;
 import frc.robot.commands.MoveElevatorToPositionCommand;
 import frc.robot.commands.MoveElevatorCommand;
 import frc.robot.commands.SwitchDriveMode;
+
+//marker
+import frc.robot.commands.Solenoids.ExtendSolenoidCommand;
+import frc.robot.commands.Solenoids.RetractSolenoidCommand;
+import frc.robot.commands.Solenoids.StopSolenoidCommand;
+import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
@@ -62,9 +68,10 @@ public class RobotContainer {
   public static final Drivetrain m_drivetrain = new Drivetrain();
 
   public static final XboxController m_driverController = new XboxController(0);
+  public static final XboxController m_driverController2 = new XboxController(1);
 
   private final ElevatorSubsystem m_elevator = new ElevatorSubsystem();
-
+  private Claw m_claw = new Claw();
 
   
 
@@ -178,6 +185,14 @@ public class RobotContainer {
 
     new JoystickButton(m_driverController, Button.kRightBumper.value)
   .onTrue(new SwitchDriveMode(m_drivetrain));
+
+  //Activates Claw
+  new JoystickButton(m_driverController2, Button.kRightBumper.value)
+  .onTrue(new ExtendSolenoidCommand(m_claw));
+
+  new JoystickButton(m_driverController2, Button.kLeftBumper.value)
+  .onTrue(new RetractSolenoidCommand(m_claw));
+  
 
   
 //This is for manual control. Also for finding encoder positions
