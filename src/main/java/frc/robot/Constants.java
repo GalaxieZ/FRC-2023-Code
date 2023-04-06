@@ -33,18 +33,18 @@ public static final class DriveConstants {
         public static final double kDeadband = 0.05;
 
          // Speed constants
-         public static final double kDriveSpeed = .8;
-         public static final double kTurnSpeed = .8;
+         public static final double kDriveSpeed = .95;
+         public static final double kTurnSpeed = .90;
 
-         public static final double cDriveSpeed = .8;
-         public static final double cTurnSpeed = .8;
+         public static final double cDriveSpeed = .95;
+         public static final double cTurnSpeed = .95;
          public static final double kTurnToleranceDeg = 0;
          public static final double kTurnRateToleranceDegPerS = 0;
 
          public static final double ksVolts = 0.663;
          public static final double kvVoltSecondsPerMeter = 1.802;
          public static final double kaVoltSecondsSquaredPerMeter = 0.28;
-         public static final double kPDriveVel = 0.2;
+         public static final double kPDriveVel = 5.0;
 
            // Physical measurements of DT
         public static final double kWheelRadius = .1524; // meters

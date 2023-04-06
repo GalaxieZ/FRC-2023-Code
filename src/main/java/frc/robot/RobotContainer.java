@@ -23,23 +23,10 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
-import frc.robot.commands.ArmManualControlCommand;
 import frc.robot.commands.AutoBalanceCommand;
-import frc.robot.commands.MoveArm;
-import frc.robot.commands.MoveElevatorCommand;
-import frc.robot.commands.MoveElevatorToPositionCommand;
-import frc.robot.commands.POVArmCommand;
-import frc.robot.commands.MoveElevatorCommand;
 import frc.robot.commands.SwitchDriveMode;
 
-//marker
-import frc.robot.commands.Solenoids.ExtendSolenoidCommand;
-import frc.robot.commands.Solenoids.RetractSolenoidCommand;
-import frc.robot.commands.Solenoids.StopSolenoidCommand;
-import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.ElevatorSubsystem;
-import frc.robot.subsystems.ElevatorSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
@@ -52,8 +39,6 @@ import edu.wpi.first.math.trajectory.constraint.DifferentialDriveVoltageConstrai
 import edu.wpi.first.wpilibj.Timer;
 import com.kauailabs.navx.frc.AHRS;
 import frc.robot.commands.TurnToTarget;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.RunCommand;
 
 
 /**
@@ -72,7 +57,7 @@ public class RobotContainer {
   public static final XboxController m_driverController = new XboxController(0);
   public static final XboxController m_driverController2 = new XboxController(1);
 
-  private final ElevatorSubsystem m_elevator = new ElevatorSubsystem();
+ // private final ElevatorSubsystem m_elevator = new ElevatorSubsystem();
 
 
   
@@ -95,8 +80,8 @@ public class RobotContainer {
    /* m_arm.setDefaultCommand(new RunCommand(() -> m_arm.stop(), m_arm));
     configureButtonBindings(); */
 
-    m_elevator.setDefaultCommand(new RunCommand(() -> m_elevator.stop(), m_elevator));
-    configureButtonBindings();
+    /*m_elevator.setDefaultCommand(new RunCommand(() -> m_elevator.stop(), m_elevator));
+    configureButtonBindings(); */
      
     //armManualControlCommand.schedule();
     
@@ -209,14 +194,14 @@ public class RobotContainer {
 
 
   // Need To update positions in MoveELevator
-  new JoystickButton(m_driverController, Button.kY.value)
+ /*  new JoystickButton(m_driverController, Button.kY.value)
   .onTrue(new MoveElevatorToPositionCommand(m_elevator, MoveElevatorToPositionCommand.ElevatorPosition.TOP));
 
   new JoystickButton(m_driverController, Button.kB.value)
   .onTrue(new MoveElevatorToPositionCommand(m_elevator, MoveElevatorToPositionCommand.ElevatorPosition.MIDDLE));
 
   new JoystickButton(m_driverController, Button.kA.value)
-  .onTrue(new MoveElevatorToPositionCommand(m_elevator, MoveElevatorToPositionCommand.ElevatorPosition.BOTTOM));
+  .onTrue(new MoveElevatorToPositionCommand(m_elevator, MoveElevatorToPositionCommand.ElevatorPosition.BOTTOM)); */
 
     
  // new JoystickButton(m_driverController, Button.kLeftBumper.value)
